@@ -1,0 +1,17 @@
+---
+- name: Deploy Dynatrace OneAgent
+  hosts: linux
+  collections:
+    - dynatrace.oneagent
+  vars:
+    oneagent_environment_url: 'https://pus61204.apps.dynatrace.com'
+    oneagent_paas_token: '{{ Dynatrace_Token }}'
+    oneagent_download_dir: /tmp/
+    # oneagent_version: 1.199.247.20200714-111723
+    # oneagent_install_args:
+    #   - INSTALL_PATH=/opt/example
+    #   - --set-host-group=My.HostGroup_123-456
+    #   - --set-network-zone=my.network.zone
+  tasks:
+    - import_role:
+        name: oneagent
